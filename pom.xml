@@ -1,0 +1,137 @@
+<!--
+    POM del proyecto microservicio-libreria.
+
+    Este proyecto utiliza:
+    - Java 21
+    - Spring Boot
+    - Maven
+
+    Contiene únicamente las dependencias necesarias para comenzar
+    a desarrollar un microservicio REST sencillo.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ejemplo</groupId>
+    <artifactId>microservicio-libreria</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>microservicio-libreria</name>
+    <description>Microservicio de ejemplo para gestión de libros</description>
+
+    <!--
+        Spring Boot Parent:
+        Gestiona automáticamente versiones de dependencias
+        y configuración de Maven para proyectos Spring Boot.
+    -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.0</version>
+    </parent>
+
+    <properties>
+        <!-- Versión de Java utilizada por el proyecto -->
+        <java.version>21</java.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- ===================================================== -->
+        <!-- DEPENDENCIAS PRINCIPALES DE SPRING BOOT               -->
+        <!-- ===================================================== -->
+
+        <!--
+            Spring Boot Starter Web
+
+            Incluye todo lo necesario para crear APIs REST:
+            - Spring MVC
+            - Tomcat embebido
+            - Jackson para JSON
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+
+        <!-- ===================================================== -->
+        <!-- DEPENDENCIAS DE UTILIDAD / DESARROLLO                 -->
+        <!-- ===================================================== -->
+
+		<!--
+		    Spring Boot DevTools
+		
+		    Herramienta de desarrollo que mejora la productividad
+		    durante la creación de aplicaciones Spring Boot.
+		
+		    Funcionalidades principales:
+		    - Reinicio automático de la aplicación al detectar cambios
+		    - Recarga rápida de clases modificadas
+		    - Configuraciones optimizadas para desarrollo
+		
+		    Esta dependencia solo se usa en desarrollo y no se incluye
+		    en el empaquetado final de producción.
+		-->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-devtools</artifactId>
+		    <scope>runtime</scope>
+		    <optional>true</optional>
+		</dependency>
+
+        <!--
+            Lombok
+
+            Reduce código repetitivo como getters/setters,
+            constructores, toString, etc.
+
+            Solo se usa en compilación.
+        -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+
+        <!-- ===================================================== -->
+        <!-- DEPENDENCIAS DE TEST                                  -->
+        <!-- ===================================================== -->
+
+        <!--
+            Spring Boot Starter Test
+
+            Incluye herramientas de testing:
+            - JUnit
+            - Mockito
+            - Spring Test
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <!--
+                Plugin que permite empaquetar y ejecutar
+                aplicaciones Spring Boot fácilmente.
+            -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

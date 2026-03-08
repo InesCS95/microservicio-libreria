@@ -1,24 +1,79 @@
-# Compiled class file
-*.class
+# =====================================================
+# ARCHIVOS GENERADOS POR MAVEN
+# =====================================================
 
-# Log file
-*.log
+# Directorio de compilación de Maven
+target/
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
+# Archivos de empaquetado generados
 *.jar
 *.war
-*.nar
 *.ear
-*.zip
-*.tar.gz
-*.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# Logs generados por Maven
+*.log
+
+
+# =====================================================
+# ARCHIVOS DEL SISTEMA OPERATIVO
+# =====================================================
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+
+# =====================================================
+# CONFIGURACIÓN DE IDEs
+# =====================================================
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse
+.project
+.classpath
+.factorypath
+.settings/
+.metadata/
+
+# VS Code
+.vscode/
+
+
+# =====================================================
+# ARCHIVOS DE COMPILACIÓN JAVA
+# =====================================================
+
+# Clases compiladas
+*.class
+
+
+# =====================================================
+# ARCHIVOS TEMPORALES
+# =====================================================
+
+# Archivos temporales
+*.tmp
+*.temp
+*.swp
+
+# Archivos de backup
+*~
+
+
+# =====================================================
+# CONFIGURACIONES LOCALES
+# =====================================================
+
+# Configuración local que puede contener datos sensibles
+application-local.properties
+application-local.yml
