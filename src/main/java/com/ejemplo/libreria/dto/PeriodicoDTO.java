@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Data Transfer Object (DTO) que representa un libro.
+ * Data Transfer Object (DTO) que representa un periódico.
  *
  * Este objeto se utiliza para transportar datos entre
  * el cliente y el servidor a través de la API REST.
@@ -16,32 +16,23 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LibroDTO {
-
-	 /**
-     * ISBN del libro.
-     */
-    private String isbn;
+public class PeriodicoDTO {
 	
-    /**
-     * Autor del libro.
+	 /**
+     * ISSN del periódico.
+     *
+     * Identificador único del periódico.
      */
-    private String autor;
+    private String issn;
 
     /**
-     * Temática o categoría del libro.
-     */
-    private String tematica;
-
-    /**
-     * Título del libro.
+     * Titulo del periódico.
      */
     private String titulo;
-    
+
     /**
-     * Editorial del libro.
+     * Fecha publicación periódico.
      */
-    private String editorial;
-        
-    
+    private String fechaPublicacion;
+   
 }
