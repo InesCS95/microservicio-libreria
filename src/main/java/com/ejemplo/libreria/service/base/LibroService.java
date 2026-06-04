@@ -2,8 +2,6 @@ package com.ejemplo.libreria.service.base;
 
 import com.ejemplo.libreria.dto.LibroDTO;
 
-import java.util.List;
-
 /**
  * Interfaz que define el contrato del servicio de libros.
  *
@@ -14,43 +12,15 @@ import java.util.List;
  * - Facilitar testing con mocks
  * - Desacoplar el controlador de la implementación
  */
-public interface LibroService {
+public interface LibroService extends CRUDService<LibroDTO> {
 
     /**
-     * Obtiene todos los libros.
-     *
-     * @return lista de libros
+     * Actualiza un libro existente usando el ISBN.
      */
-    List<LibroDTO> obtenerLibros();
+    LibroDTO actualizar(String isbn, LibroDTO libroDTO);
 
     /**
-     * Obtiene un libro por su título.
-     *
-     * @param titulo título del libro
-     * @return libro encontrado
+     * Elimina un libro por ISBN.
      */
-    LibroDTO obtenerLibroPorTitulo(String titulo);
-
-    /**
-     * Crea un nuevo libro.
-     *
-     * @param libroDTO datos del libro a crear
-     */
-    void crearLibro(LibroDTO libroDTO);
-
-    /**
-     * Actualiza un libro existente.
-     *
-     * @param titulo título del libro a actualizar
-     * @param libroDTO datos nuevos
-     */
-    void actualizarLibro(String titulo, LibroDTO libroDTO);
-
-    /**
-     * Elimina un libro por su título.
-     *
-     * @param titulo título del libro a eliminar
-     */
-    void eliminarLibro(String titulo);
-
+    void eliminar(String isbn);
 }
