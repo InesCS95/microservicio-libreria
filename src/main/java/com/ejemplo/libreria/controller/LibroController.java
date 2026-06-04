@@ -2,106 +2,81 @@ package com.ejemplo.libreria.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.ejemplo.libreria.dto.LibroDTO;
-import com.ejemplo.libreria.service.base.LibroService;
+import com.ejemplo.libreria.service.impl.LibroServiceImpl;
 
 /**
  * Controlador REST que expone los endpoints
  * para gestionar libros.
  *
- * En este caso cada operación tiene su propio endpoint
- * específico en lugar de utilizar el patrón REST clásico.
+ * Cada operación tiene su propio endpoint.
  */
 @RestController
 @RequestMapping("/libros")
 public class LibroController {
 
-    private final LibroService libroService;
+    private final LibroServiceImpl libroService;
 
     /**
      * Constructor con inyección de dependencias.
      *
      * @param libroService servicio de gestión de libros
      */
-    public LibroController(LibroService libroService) {
+    public LibroController(LibroServiceImpl libroService) {
         this.libroService = libroService;
     }
-
+    
+    
     /**
-     * Recupera todos los libros registrados.
-     *
-     * Endpoint:
-     * GET /libros/recuperarLibros
-     *
-     * @return lista de libros
+     * Petición GET para recuperar todos los libros.
+     *  Recupera todos los libros registrados.
+     *  GET /libros/recuperarLibros
      */
     @GetMapping("/recuperarLibros")
     public List<LibroDTO> recuperarLibros() {
-        return libroService.obtenerLibros();
+        return libroService.obtenerTodo();
     }
 
     /**
-     * Recupera un libro a partir de su título.
+     * Recupera libros por título.
      *
-     * Endpoint:
      * GET /libros/recuperarLibro/{titulo}
-     *
-     * @param titulo título del libro
-     * @return libro encontrado
      */
     @GetMapping("/recuperarLibro/{titulo}")
-    public LibroDTO recuperarLibro(@PathVariable String titulo) {    	
-    	
-        return libroService.obtenerLibroPorTitulo(titulo);
+    public List<LibroDTO> recuperarLibro(@PathVariable String titulo) {
+        return libroService.obtenerPorTitulo(titulo);
     }
-    
+
     /**
      * Crea un nuevo libro.
      *
-     * Endpoint:
      * POST /libros/crearLibro
-     *
-     * @param libroDTO datos del libro a crear
      */
     @PostMapping("/crearLibro")
     public void crearLibro(@RequestBody LibroDTO libroDTO) {
-        libroService.crearLibro(libroDTO);
+        libroService.crear(libroDTO);
     }
 
     /**
-     * Actualiza un libro existente.
+     * Actualiza un libro existente por ISBN.
      *
-     * Endpoint:
-     * PUT /libros/actualizarLibro/{titulo}
-     *
-     * @param titulo título del libro
-     * @param libroDTO datos actualizados
+     * PUT /libros/actualizarLibro/{isbn}
      */
-    @PutMapping("/actualizarLibro/{titulo}")
-    public void actualizarLibro(@PathVariable String titulo,
-                                @RequestBody LibroDTO libroDTO) {
-        libroService.actualizarLibro(titulo, libroDTO);
+    @PutMapping("/actualizarLibro/{isbn}")
+    public LibroDTO actualizarLibro(@PathVariable String isbn,
+                                    @RequestBody LibroDTO libroDTO) {
+        return libroService.actualizar(isbn, libroDTO);
     }
 
     /**
-     * Elimina un libro por su título.
+     * Elimina un libro por ISBN.
      *
-     * Endpoint:
-     * DELETE /libros/borrarLibro/{titulo}
-     *
-     * @param titulo título del libro a eliminar
+     * DELETE /libros/borrarLibro/{isbn}
      */
-    @DeleteMapping("/borrarLibro/{titulo}")
-    public void borrarLibro(@PathVariable String titulo) {
-        libroService.eliminarLibro(titulo);
+    @DeleteMapping("/borrarLibro/{isbn}")
+    public void borrarLibro(@PathVariable String isbn) {
+        libroService.eliminar(isbn);
     }
 }
